@@ -2,7 +2,7 @@
 //books, bookName, bookPrice, bookauthor, bookgenre
 
 const bookModel = (sequilize,DataTypes)=>{
-    const Book = Sequelize.define("book",{
+    const Book = sequilize.define("book",{
         bookName : {
             type : DataTypes.STRING,
             allowNull : false
@@ -13,15 +13,12 @@ const bookModel = (sequilize,DataTypes)=>{
         },
         bookAuthor : {
             type : DataTypes.STRING,
-            allowNull : false
         },
         bookGenre : {
             type : DataTypes.STRING
         }
-    }
-
-    )
-    return Book
+     })
+     return Book
 }
 
-module.exports = bookModel
+module.exports = bookModel // export default bookModel
