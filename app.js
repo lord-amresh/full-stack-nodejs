@@ -1,47 +1,18 @@
-const express =  require('express')  // express require gareko
-const app = express()       //express lai trigger gareko
+const express = require("express") // express require gareko
+const bookRoute = require("./routes/bookRoute")
 
+
+const app = express() // express lai trigger gareko 
 require("./Database/connection")
+app.use(express.json())
+// let app = require("express")()
+
+// localhost:4000/api+ /hello = localhost:4000/api/hello
+// localhost:4000/api + /books/:id = localhost:4000/api/books/:id
+// localhost:4000/api/haha/ + /books = localhost:4000/api/haha//books
+app.use("/api/books",bookRoute)
 
 
-// let app = require("express0")()
-app.get("/books",function(req,res){
-    // logic to fetch books from database
-
-    res.json({
-        message : "books fetched successfully"
-    })
+app.listen(4000, function () {
+    console.log("project/server/backend has started at port 4000")
 })
-
-app.post("/books",function(req,res){
-    // logic to add book to database goe here
-
-    res.json({
-        message : "Book added successfully"
-    })
-})
-
-
-app.delete("/books/:id",function(req,res){
-    // logic to delete book
-
-    res.json({
-        message : "Book deleted successfully"
-    })
-})
-
-
-app.patch("/books/:id",function(req,res){
-    // logic to update book
-
-    res.json({
-        message : "Book updated successfully"
-    })
-})
-
-
-
-app.listen(4000,function(){
-    console.log("Project/server/backend has started at port 4000")
-})
-
