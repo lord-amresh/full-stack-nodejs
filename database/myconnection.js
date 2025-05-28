@@ -3,7 +3,7 @@
 const {Sequelize,DataTypes} = require("sequelize")
 
 
-const sequelize= new Sequelize("postgresql://postgres.bpurtwvuskghtnohkvwf:rabindra2229@aws-0-ap-south-1.pooler.supabase.com:6543/postgres")
+const sequelize= new Sequelize(process.env.CS)
 
 sequelize.authenticate()
 .then(()=>{
