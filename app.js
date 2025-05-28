@@ -1,7 +1,7 @@
 const express = require("express") // express require gareko
 const app = express()  //express lai trigger gareko
 
-require("./database/myconnection")
+require("./database/db.connection")
 
 //let app = require("express")()
 app.get("/books",function(req,res){
