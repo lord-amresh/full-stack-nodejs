@@ -31,17 +31,36 @@ exports.addBook = async function(req,res){
     })
 }
 
-exports.deleteBook = function(req,res){
+exports.deleteBook = async function(req,res){
     //logic to delete book to database goes here..
+    const id = req.params.id
+
+    await books.destroy({
+        where : {
+            id
+        }
+    })//delete from books where id = id.
     res.json({
         message : "Book deleted successfully"
     })
 }
 
-exports.editBook = function(req,res){
+exports.editBook = async function(req,res){
     //logic to update book to database goes here..
+//kun id ko chai edit garne tyo id linu paryo
+    const id = req.params.id
+    //k k update garne ta..
+    const {bookName,bookPrice,bookAuthor,bookGenre} = req.body
+
+    await books.update({bookName,bookPrice,bookAuthor,bookGenre},{
+        where : {
+            id : id
+        }
+    })
+    //books.findByIdAndUpdate(id,{})
+
     res.json({
-        message : "Book deleted successfully"
+        message : "Book edited successfully"
     })
 }
 
@@ -51,7 +70,7 @@ exports.singleFetchBook = async function(req,res){
     const datas = await books.findByPk(id) //always returns object mongodb ->findById 
     res.json({
         message : "Single Book fetched successfully",
-        datas
+        datas,
     })
 }
 
