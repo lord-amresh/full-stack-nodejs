@@ -16,9 +16,6 @@ const bookModel = (sequelize,DataTypes)=>{
         },
         bookGenre : {
             type : DataTypes.STRING
-        },
-        bookDescription : {
-            type : DataTypes.TEXT
         }
     })
     return Book
